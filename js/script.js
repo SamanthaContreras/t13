@@ -110,8 +110,8 @@ $(document).ready(function(){
 			};
 
 			$.ajax({
-				url: "https://andreihelo-restful-api.herokuapp.com/students/"+id,
-				method: "PUT",
+				url: "https://andreihelo-restful-api.herokuapp.com/students/"+id+"?_method=PUT",
+				method: "POST",
 				data: student,
 				success: function(result, status, xhr){
 					row.empty();
@@ -137,8 +137,11 @@ $(document).ready(function(){
 		var id = row.eq(0).text();
 		console.log(id);
 		$.ajax({
-			url: "https://andreihelo-restful-api.herokuapp.com/students/"+id+"/",
-			method: "DELETE",
+			url: "http://andreihelo-restful-api.herokuapp.com/students/"+id,
+			method: "POST",
+			data: {
+				"_method" : "DELETE"
+			},
 			success: function(result, status, xhr){
 				row.remove();
 			}
