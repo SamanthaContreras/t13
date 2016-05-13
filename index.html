@@ -1,0 +1,74 @@
+<!DOCYTPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>Alumnos</title>
+</head>
+<body>
+	<div id="main">
+		<header class="page-header">
+			<h1>Alumnos</h1>
+      <label for="search">Buscar: </label>
+      <input type="number" class="form-control" id="search" placeholder="id"/>
+      <button class="btn btn-default" id="btnSearch"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+		</header>
+		<table id="alumnos" class="table">
+			<tr>
+				<th>id</th>
+				<th>Matrícula</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Estatus</th>
+				<th><button class="btn btn-primary" id="addModal"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+				</th>
+			</tr>
+		</table>
+	</div>
+   <!-- Nuevo alumno -->
+	<div class="modal fade" id="nuevoAlumno" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+  		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+      			<div class="modal-header">
+        			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        			<h2 class="modal-title" id="modalLabel">Nuevo alumno</h4>
+      			</div>
+      			<div class="modal-body">
+                <div class="alert alert-danger" role="alert" id="errorAlert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <p>Parece que tienes un error. Verifica tus datos.</p>
+                </div>
+        		    <form>
+                  <div class="form-group">
+                    <label for="registration_number">Matrícula<span>*<span></label>
+                    <input type="number" class="form-control" id="registration_number"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="registration_number">Nombre<span>*<span></label>
+                    <input type="text" class="form-control" id="name"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="registration_number">Apellido<span>*<span></label>
+                    <input type="text" class="form-control" id="last_name"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="registration_number">Estatus</label>
+                    <input type="text" class="form-control" id="status"/>
+                  </div>
+                </form>   
+      			</div>
+      			<div class="modal-footer">
+        			<button type="button" class="btn btn-default" data-dismiss="modal" id="cancelar">Cancelar</button>
+        			<button type="button" class="btn btn-primary" id="add">Agregar</button>
+      			</div>
+    		</div>
+  		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+   <script type="text/javascript" src="css/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
