@@ -70,7 +70,8 @@ $(document).ready(function(){
 				error: function(){
 					$("#alumnos").find("tr").eq(0).nextAll().remove();
 					$("#alumnos").append("<tr><td colspan='6'>No se encontró ningún registro</td></tr>");
-					$("header").append("<button class='btn btn-default' id='clearSearch'>Mostrar todos</button>");
+					if(($("#btnSearch").next().attr("id"))!=="clearSearch")
+						$("header").append("<button class='btn btn-default' id='clearSearch'>Mostrar todos</button>");
 				}
 			});
 		}
@@ -132,22 +133,24 @@ $(document).ready(function(){
 		});
 	});
 
+	// Eliminar
 	$(document).on("click",".btn-danger",function(){
 		var row = $(this).parent().parent().children();
 		var id = row.eq(0).text();
 		console.log(id);
 		$.ajax({
-			url: "http://andreihelo-restful-api.herokuapp.com/students/"+id,
-			method: "POST",
-			data: {
-				"_method" : "DELETE"
-			},
+			url: "https://andreihelo-restful-api.herokuapp.com/students/"+id,
+			method: "DELETE",
+			// data: {
+			// 	"_method" : "DELETE"
+			// },
 			success: function(result, status, xhr){
 				row.remove();
 			}
 		});
 	});
 
+	// Listar estudiantes
 	function load(){
 		$.ajax({
 			url: "https://andreihelo-restful-api.herokuapp.com/students",
@@ -167,6 +170,7 @@ $(document).ready(function(){
 		});
 	}
 
+	// 
 	function clear(){
 		$("#registration_number").val("");
 		$("#name").val("");
