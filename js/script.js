@@ -140,10 +140,10 @@ $(document).ready(function(){
 		console.log(id);
 		$.ajax({
 			url: "https://andreihelo-restful-api.herokuapp.com/students/"+id,
-			method: "DELETE",
-			// data: {
-			// 	"_method" : "DELETE"
-			// },
+			method: "POST",
+			data: {
+				"_method" : "DELETE"
+			},
 			success: function(result, status, xhr){
 				row.remove();
 			}
