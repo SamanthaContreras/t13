@@ -1,9 +1,9 @@
 $(document).ready(function(){
-	var i =0;
 	$("#errorAlert").hide();
 	clear();
-	load();
+	load(); // Lista a los alumnos al cargar la página
 
+	// Nuevo alumno
 	$("#addModal").click(function(){
 		clear();
 		$("#errorAlert").hide();
@@ -13,8 +13,8 @@ $(document).ready(function(){
 			$("#modalLabel").text("Nuevo alumno");
 		}
 
-		$("#nuevoAlumno").modal('show');
-		$("#add").click(function(){
+		$("#nuevoAlumno").modal('show'); // Muestra el formulario para agregar
+		$("#add").click(function(){ 
 
 			var registration_number = $("#registration_number").val();
 			var name = $("#name").val();
@@ -49,6 +49,7 @@ $(document).ready(function(){
 		});
 	});
 
+	// Buscar
 	$("#btnSearch").click(function(){
 		var id = $("#search").val();
 		if(id!=""){
@@ -64,19 +65,21 @@ $(document).ready(function(){
 							+" aria-hiden='true'></span></button><button class='btn btn-danger'>"
 							+"<span class='glyphicon glyphicon-remove-sign' "
 							+"aria-hiden='true'></span></button></td></tr>");
-					if(($("#btnSearch").next().attr("id"))!=="clearSearch")
-						$("header").append("<button class='btn btn-default' id='clearSearch'>Mostrar todos</button>");
+					if(($(".col-lg-6").next().attr("id"))!=="clearSearch"){
+						$(".row").append("<button class='btn btn-default' id='clearSearch'>Mostrar todos</button>");
+					}
 				},
 				error: function(){
 					$("#alumnos").find("tr").eq(0).nextAll().remove();
 					$("#alumnos").append("<tr><td colspan='6'>No se encontró ningún registro</td></tr>");
-					if(($("#btnSearch").next().attr("id"))!=="clearSearch")
-						$("header").append("<button class='btn btn-default' id='clearSearch'>Mostrar todos</button>");
+					if(($(".col-lg-6").next().attr("id"))!=="clearSearch")
+						$(".row").append("<button class='btn btn-default' id='clearSearch'>Mostrar todos</button>");
 				}
 			});
 		}
 	});
-
+	
+	// Mostrar todos después de la búsqueda
 	$(document).on("click","#clearSearch",function(){
 		$("#alumnos").find("tr").eq(0).nextAll().remove();
 		$(this).remove();
@@ -84,12 +87,18 @@ $(document).ready(function(){
 		load();
 	});
 
+	// Modificar
 	$(document).on("click",".btn-success",function(){
 		clear();
 		$("#errorAlert").hide();
 		var row = $(this).parent().parent();
 		var id = row.children().eq(0).text();
-		console.log(row.html()+" id: "+id);
+
+		$("#registration_number").val(row.children().eq(1).text());
+		$("#name").val(row.children().eq(2).text());
+		$("#last_name").val(row.children().eq(3).text());
+		$("#status").val(row.children().eq(4).text());
+
 		$("#nuevoAlumno").modal('show');
 		$("#modalLabel").text("Modificar alumno");
 		if($("#cancelar").next().attr("id")==="add"){
@@ -98,9 +107,12 @@ $(document).ready(function(){
 		}
 
 		$("#mod").click(function(){
-			var registration_number = $("#registration_number").val();
-			var name = $("#name").val();
-			var last_name = $("#last_name").val();
+			if($("#registration_number").val()!="")
+				var registration_number = $("#registration_number").val();
+			if($("#name").val()!="")
+				var name = $("#name").val();
+			if($("#last_name").val()!="")
+				var last_name = $("#last_name").val();
 			var status = $("#status").val();
 
 			var student = {
@@ -156,11 +168,12 @@ $(document).ready(function(){
 			url: "https://andreihelo-restful-api.herokuapp.com/students",
 			success: function(result, status, xhr){
 				$.each(result, function(i){
-					$("#alumnos").append("<tr><td>"+result[i].id+"</td><td>"
-						+result[i].registration_number
-						+"</td><td>"+result[i].name+"</td><td>"+result[i].last_name
-						+"</td><td>"+result[i].status
-						+"</td><td><button class='btn btn-success'>"
+					$("#alumnos").append("<tr><td>"+result[i].id+"</td>"
+						+"<td>"+result[i].registration_number+"</td>"
+						+"<td>"+result[i].name+"</td>"
+						+"<td>"+result[i].last_name+"</td>"
+						+"<td>"+result[i].status+"</td>"
+						+"<td><button class='btn btn-success'>"
 						+"<span class='glyphicon glyphicon-pencil'"
 						+" aria-hiden='true'></span></button><button class='btn btn-danger'>"
 						+"<span class='glyphicon glyphicon-remove-sign' "
@@ -170,7 +183,7 @@ $(document).ready(function(){
 		});
 	}
 
-	// 
+	// Limpia los campos del formulario agregar/modificar
 	function clear(){
 		$("#registration_number").val("");
 		$("#name").val("");

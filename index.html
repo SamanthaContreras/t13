@@ -10,13 +10,29 @@
 	<div id="main">
 		<header class="page-header">
 			<h1>Alumnos</h1>
-      <label for="search">Buscar: </label>
-      <input type="number" class="form-control" id="search" placeholder="id"/>
-      <button class="btn btn-default" id="btnSearch"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+      <p>Agrega, modifica y elimina alumnos.</p>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="ID" id="search">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button" id="btnSearch"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+            </span>
+          </div><!-- /input-group -->
+        </div>
+      </div>
+      <!-- <input type="number" class="form-control" id="search" placeholder="ID"/>
+      <button class="btn btn-default" id="btnSearch"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button> -->
 		</header>
 		<table id="alumnos" class="table">
+      <col width="50px"/>
+      <col width="130px"/>
+      <col width="170px"/>
+      <col width="170px"/>
+      <col width="170px"/>
+      <col width="90px"/>
 			<tr>
-				<th>id</th>
+				<th>ID</th>
 				<th>Matrícula</th>
 				<th>Nombre</th>
 				<th>Apellido</th>
