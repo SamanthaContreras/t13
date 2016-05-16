@@ -74,7 +74,7 @@ $(document).ready(function(){
 					}
 				},
 				error: function(){
-					$("#alumnos").find("tr").eq(0).nextAll().remove();
+					$("#alumnos").children().remove();
 					$("#alumnos").append("<tr><td colspan='6'>No se encontró ningún registro</td></tr>");
 					if(($(".col-lg-4").next().attr("id"))!=="clearSearch")
 						$(".row").append("<button class='btn btn-default' id='clearSearch'>Mostrar todos</button>");
@@ -97,7 +97,7 @@ $(document).ready(function(){
 		$("#errorAlert").hide();
 		var row = $(this).parent().parent();
 		var id = row.children().eq(0).text();
-
+		console.log(id);
 		$("#registration_number").val(row.children().eq(1).text());
 		$("#name").val(row.children().eq(2).text());
 		$("#last_name").val(row.children().eq(3).text());
