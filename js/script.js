@@ -40,7 +40,12 @@ $(document).ready(function(){
 						+" aria-hiden='true'></span></button><button class='btn btn-danger'>"
 						+"<span class='glyphicon glyphicon-remove-sign' "
 						+"aria-hiden='true'></span></button></td></tr>");
-						$("#nuevoAlumno").modal('hide');
+					$("#nuevoAlumno").modal('hide');
+					$("html, body").animate({
+							scrollTop: $("#alumnos").children().last().offset().top},200);
+					$("#alumnos").children().last().fadeTo(800, 0.5, function(){
+						$("#alumnos").children().last().fadeTo(800, 1);
+					});
 				},
 				error: function(result, status, xhr){
 					$("#errorAlert").show();
@@ -65,14 +70,14 @@ $(document).ready(function(){
 							+" aria-hiden='true'></span></button><button class='btn btn-danger'>"
 							+"<span class='glyphicon glyphicon-remove-sign' "
 							+"aria-hiden='true'></span></button></td></tr>");
-					if(($(".col-lg-6").next().attr("id"))!=="clearSearch"){
+					if(($(".col-lg-4").next().attr("id"))!=="clearSearch"){
 						$(".row").append("<button class='btn btn-default' id='clearSearch'>Mostrar todos</button>");
 					}
 				},
 				error: function(){
 					$("#alumnos").find("tr").eq(0).nextAll().remove();
 					$("#alumnos").append("<tr><td colspan='6'>No se encontró ningún registro</td></tr>");
-					if(($(".col-lg-6").next().attr("id"))!=="clearSearch")
+					if(($(".col-lg-4").next().attr("id"))!=="clearSearch")
 						$(".row").append("<button class='btn btn-default' id='clearSearch'>Mostrar todos</button>");
 				}
 			});
@@ -128,6 +133,9 @@ $(document).ready(function(){
 				data: student,
 				success: function(result, status, xhr){
 					row.empty();
+					row.fadeTo(800, 0.5, function(){
+						row.fadeTo(800, 1);
+					});
 					row.html("<td>"+result.id+"</td><td>"
 						+result.registration_number
 						+"</td><td>"+result.name+"</td><td>"+result.last_name

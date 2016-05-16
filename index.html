@@ -7,40 +7,43 @@
 	<title>Alumnos</title>
 </head>
 <body>
-	<div id="main">
+	<div class="container" id="main">
 		<header class="page-header">
 			<h1>Alumnos</h1>
       <p>Agrega, modifica y elimina alumnos.</p>
       <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-4">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="ID" id="search">
             <span class="input-group-btn">
               <button class="btn btn-default" type="button" id="btnSearch"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
             </span>
-          </div><!-- /input-group -->
+          </div>
         </div>
       </div>
-      <!-- <input type="number" class="form-control" id="search" placeholder="ID"/>
-      <button class="btn btn-default" id="btnSearch"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button> -->
 		</header>
-		<table id="alumnos" class="table">
-      <col width="50px"/>
-      <col width="130px"/>
-      <col width="170px"/>
-      <col width="170px"/>
-      <col width="170px"/>
-      <col width="90px"/>
-			<tr>
-				<th>ID</th>
-				<th>Matrícula</th>
-				<th>Nombre</th>
-				<th>Apellido</th>
-				<th>Estatus</th>
-				<th><button class="btn btn-primary" id="addModal"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
-				</th>
-			</tr>
-		</table>
+    <div>
+  		<table class="table">
+        <col width="50px"/>
+        <col width="130px"/>
+        <col width="170px"/>
+        <col width="170px"/>
+        <col width="170px"/>
+        <col width="90px"/>
+        <thead>
+    			<tr>
+    				<th>ID</th>
+    				<th>Matrícula</th>
+    				<th>Nombre</th>
+    				<th>Apellido</th>
+    				<th>Estatus</th>
+    				<th><button class="btn btn-primary" id="addModal"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+    				</th>
+    			</tr>
+        </thead>
+        <tbody id="alumnos"></tbody>
+  		</table>
+    </div>
 	</div>
    <!-- Nuevo alumno -->
 	<div class="modal fade" id="nuevoAlumno" tabindex="-1" role="dialog" aria-labelledby="modalLabel">

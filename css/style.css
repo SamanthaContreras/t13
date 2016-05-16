@@ -35,13 +35,13 @@ label > span {
 	color: red;
 }
 
-table {
+/*table {
 	table-layout: fixed;
-}
+}*/
 
-td {
+/*td {
 	overflow: hidden;
-}
+}*/
 
 th {
 	font-size: 15px;
