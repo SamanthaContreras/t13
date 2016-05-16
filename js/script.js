@@ -15,7 +15,6 @@ $(document).ready(function(){
 
 		$("#nuevoAlumno").modal('show'); // Muestra el formulario para agregar
 		$("#add").click(function(){ 
-
 			var registration_number = $("#registration_number").val();
 			var name = $("#name").val();
 			var last_name = $("#last_name").val();
@@ -86,7 +85,7 @@ $(document).ready(function(){
 	
 	// Mostrar todos después de la búsqueda
 	$(document).on("click","#clearSearch",function(){
-		$("#alumnos").find("tr").eq(0).nextAll().remove();
+		$("#alumnos").children().remove();
 		$(this).remove();
 		$("#search").val("");
 		load();
