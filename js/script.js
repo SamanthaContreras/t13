@@ -61,7 +61,7 @@ $(document).ready(function(){
 			$.ajax({
 				url: "https://andreihelo-restful-api.herokuapp.com/students/"+id,
 				success: function(result, status, xhr){
-					$("#alumnos").find("tr").eq(0).nextAll().remove();
+					$("#alumnos").children().remove();
 					$("#alumnos").append("<tr><td>"+result.id+"</td><td>"
 							+result.registration_number
 							+"</td><td>"+result.name+"</td><td>"+result.last_name
